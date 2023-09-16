@@ -9,7 +9,7 @@
   * `d` tag is the pubkey of the person being added, self if this is the first event in the Tree
     * if this is the first event of the Tree, the pubkey MUST match the creator of the Rocket and be signed by them
   * `n` tag is the permanym of the person being added (from their kind0)
-  * `a` tag is `15171031:<pubkey of rocket creator>:<d tag of Rocket || pubkey of Tree creator>`
+  * `a` tag is `15171031:<pubkey of rocket creator>:<d tag of Rocket>`
   * `e` tag event ID of a Kind 15171032 event adding the signer to the tree (except for the event adding the Tree creator)
   * `e` tag event ID of Nostrocket ignition event
 * `.Content` if this event is created by the rocket creator, and it is the first Identity Tree event for the rocket, it SHOULD include a description of the purpose of the tree in the Content field.
