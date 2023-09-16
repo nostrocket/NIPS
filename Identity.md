@@ -1,5 +1,4 @@
 # Identity Tree:
-* Must be started by the creator of the Rocket.
 * Permanyms MUST be unique within the tree.
 * Rockets can have multiple trees which are used for permissions over certain functions, for example people in the Maintainer tree can merge patches.
 * Single non-replaceable events are used rather than a replaceable list such that there is a historical record of action taken within the Identity Tree.
@@ -8,6 +7,7 @@
 * `.Kind` 15171032
 * `.Tags`
   * `d` tag is the pubkey of the person being added, self if this is the first event in the Tree
+    * if this is the first event of the Tree, the pubkey MUST match the creator of the Rocket and be signed by them
   * `n` tag is the permanym of the person being added (from their kind0)
   * `a` tag is `15171031:<pubkey of rocket creator>:<d tag of Rocket || pubkey of Tree creator>`
   * `e` tag event ID of a Kind 15171032 event adding the signer to the tree (except for the event adding the Tree creator)
