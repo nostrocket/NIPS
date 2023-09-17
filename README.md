@@ -12,4 +12,5 @@ The following icons are used to represent what data should and should not be inc
 
 ## INDEX
 
-* [Identity](Identity.md)
+* [Identity Tree](Identity.md)
+* [Problem Tracker](Problems.md)
