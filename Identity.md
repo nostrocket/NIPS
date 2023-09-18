@@ -1,9 +1,13 @@
 # Identity Tree:
 ‼️🔷🚀🍌🔂 Definitions are located in the Nostrocket NIP index.
 
-* Permanyms MUST be unique within the tree.
+An Identity Tree is a graph of identities that makes Sybil attacks more expensive to conduct than it is to mitigate them.
+
+* **Permanyms** in an Identity Tree are both unique and permanent within the Tree. They should usually be the same as the username in the user's `kind 0` event.
+
 * Rockets can have multiple trees which are used for permissions over certain functions, for example people in the Maintainer tree can merge patches.
-* Single non-replaceable events are used rather than a replaceable list such that there is a historical record of action taken within the Identity Tree.
+
+* Identity Trees are composed of event chains that are compiled into a current state. We use this rather than using replaceable list events so that there is a transparent historical record of action taken within the Identity Tree. 
 
 ## Creating a new Tree
 ### Tree Ignition Event 🔂
