@@ -1,5 +1,5 @@
 # Identity Tree:
-‼️🔷🚀🍌🔂 Definitions are located in the Nostrocket NIP index.
+‼️🔹🚀🍌🔂 Definitions are located in the Nostrocket NIP index.
 
 An Identity Tree is a graph of identities that makes Sybil attacks more expensive to conduct than it is to mitigate them.
 
@@ -26,10 +26,10 @@ An Identity Tree is a graph of identities that makes Sybil attacks more expensiv
 * `.Tags`
 	* ‼️`d` random hash
 	* ‼️`e` pointer to a Tree Ignition Event
-	* 🍌🔷`fee` `<event ID of state change event where this takes effect from>:<amount in sats>:<LUD16>:<Authorized zap reciept issuer pubkey>` Multiple allowed.
-	* 🚀🔷`fee` amount in sats (paid to merit holders of the Rocket)
-	* 🔷`checkpoint` the event ID of a state change event to be used as a checkpoint in the event chain. Multiple allowed.
-	* 🔷`maintainer` a pubkey that clients SHOULD follow for Tree Metadata Events in addition to the Tree Ignition Event creator.
+	* 🍌🔹`fee` `<event ID of state change event where this takes effect from>:<amount in sats>:<LUD16>:<Authorized zap reciept issuer pubkey>` Multiple allowed.
+	* 🚀🔹`fee` amount in sats (paid to merit holders of the Rocket)
+	* 🔹`checkpoint` the event ID of a state change event to be used as a checkpoint in the event chain. Multiple allowed.
+	* 🔹`maintainer` a pubkey that clients SHOULD follow for Tree Metadata Events in addition to the Tree Ignition Event creator.
 
 #### Client Validation
 MUST be Signed by same pubkey as the Tree Ignition Event or one of the `maintainer` pubkeys (can be nested).
@@ -51,13 +51,13 @@ This event is OPTIONAL, members MAY be added to a Tree without this event.
 * `.Tags`
 	* ‼️`e` pointer to a `kind 15171032` Tree Ignition Event
   	* ‼️`p` pubkey of the person being added to the Tree
-  	* 🚀‼️🍌🔷`n` Exactly ONE of the following:
+  	* 🚀‼️🍌🔹`n` Exactly ONE of the following:
   		*  a embedded `kind 15171033` event containing an explicitely requested Permanym
   		*  an embedded `kind 0` event to use as the Permanym
   	* ‼️`e` pointer to the `kind 15171034` event adding the signer of this event to the Tree unless this event is signed by the creator of the `kind 15171032` root of the tree and the `p` tag is their own pubkey.
   	* `e` pointer to the Nostrocket ignition event with the label `root`
-  	* 🚀‼️🍌🔷`o` pointer to the latest valid state change event 🔂 in the tree
-  	* 🔷`payment` an embedded zap reciept 
+  	* 🚀‼️🍌🔹`o` pointer to the latest valid state change event 🔂 in the tree
+  	* 🔹`payment` an embedded zap reciept 
   	
 
 #### Client Validation
@@ -76,7 +76,7 @@ If they do not, or if they add more accounts that turn out to be spammers, then 
 	* ‼️`e` pointer to the `kind 15171034` Tree Merge event that added the bad actor to the Tree
 	* 🚀`a` `15171031:<pubkey of rocket creator>:<d tag of Rocket>`
 	* 🚀`e` pointer to the Nostrocket ignition event with the label `root`
-	* 🚀‼️🍌🔷`o` pointer to the latest valid state change event 🔂 in the tree
+	* 🚀‼️🍌🔹`o` pointer to the latest valid state change event 🔂 in the tree
 * `.Content` MUST include the reason for removal, and SHOULD include evidence (event IDs of spam messages for example) 
 
 #### Client Validation
