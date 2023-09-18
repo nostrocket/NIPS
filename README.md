@@ -8,7 +8,9 @@ The following icons are used to represent what data should and should not be inc
 
 ‼️ This data MUST be incuded.   
 🚀 This data MUST be included IF and ONLY IF used within Nostrocket (attached).  
-🍌 SHOULD be included IF and ONLY IF used without Nostrocket (detached).
+🍌 SHOULD be included IF and ONLY IF used without Nostrocket (detached).  
+🔷 OPTIONAL 
+🔂 This indicates a State Change Event.
 
 ## INDEX
 
