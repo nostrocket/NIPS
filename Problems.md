@@ -18,7 +18,7 @@ This is a pointer to the current Problem state defined in a COMMIT event.
 	* ‼️`e` pointer to a `kind 311070` Commit event.
 	* 🚀`e` pointer to the Nostrocket ignition event   
 	
-##### Client Validation
+#### Client Validation
 * Clients MUST verify that the author is a Maintainer on the Rocket (🚀) or Problem (🍌).
 * Clients MUST use the latest HEAD event published by any pubkey that is a Maintainer on the Rocket or Problem.
 
@@ -37,8 +37,8 @@ This is a request to modify the current state of a Problem.
 		*  `s` status tag: `open || claimed || closed `
 	* 🚀`e` pointer to the Nostrocket ignition event 
 
-##### Client Validation
-Clients MUST validate
+#### Client Validation
+
 Rocket Tag: MUST be a maintainer on that rocket to merge a commit that adds the rocket to the `t` tag.
 
 ## Problem Text Event 
