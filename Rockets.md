@@ -52,6 +52,15 @@ Protocol Flow:
 4. If we see mismatched consensus chains, we follow the one with the most votepower.
 
 
+### Consensus Event
+* `.Kind` 15172008
+* `.Tags`
+	* [MUST]: `ignitionTag`
+	* [MUST]: `e` pointer to the `kind 15171031` Rocket Ignition event with the label `rocket`
+	* [MUST]: `e` pointer to the state change event being witnessed, with the label `request`
+	* [MUST]: `e` pointer to the last valid consensus event published by this pubkey, with the label `previous`
+	* [SHOULD]: `h` `<current bitcoin height>:<height of this event in this pubkey's consensus chain>`
+	
 
 - Rocket Anchor
   - Merit Requests
