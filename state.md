@@ -23,4 +23,4 @@ To avoid language theoretic security vulnerabilities, state change requests are 
 
 A valid state change request can only cause a particular type of state change from a finite set of possible state changes. However, Participants with Votepower, and the set of Maintainers, are able to modify the execution environment itself in a fluid and dynamic manner to provide any functionality that "smart contracts" provide when deployed to the EVM. 
 
-Users can select from a market of different "authorities" (votepower roots), fork an existing one, or create an entirely new one.
+Users can select from a market of different "authorities" or "Rockets" (votepower roots), fork an existing one, or create an entirely new one. Rockets can also inherit portions of state from other Rockets, allowing composability, remixing, etc.
