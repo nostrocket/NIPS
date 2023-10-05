@@ -59,4 +59,3 @@ e.g. a problem/solution difficulty level, a programming language, etc
 	* [🚀MUST]`e` pointer to the Nostrocket root event 
 	* [MUST]`t` with the label `name`. Name of the keyword. MUST be `=< 16` characters
 	* [SHOULD]`t` with the label `summary` a definition of the label. MUST be plaintext of `=< 280` characters.
-
