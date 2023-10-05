@@ -13,12 +13,12 @@ An Identity Tree is a graph of identities that makes Sybil attacks more expensiv
 ### Tree Ignition Event 🔂
 * `.Kind` 15171032
 * `.Tags`
-	* 🚀`a` pointer to a Rocket `15171031:<pubkey of rocket creator>:<d tag of Rocket>`
+	* 🚀`e` pointer to a Rocket Ignition Event of `kind 15171031` with the label `rocket`.
 	* 🚀`e` pointer to the Nostrocket ignition event with the label `root`
 * `.Content` SHOULD include a description of the purpose of the Tree.
 
 #### Client Validation
-* 🚀Signer MUST be the creator of the Rocket tagged in the `a` tag.
+* 🚀Signer MUST be the creator of the Rocket tagged in the `e` tag.
 
 ### Tree Metadata Event (replaceable)
 ##### This is optional

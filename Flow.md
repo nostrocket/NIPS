@@ -1,4 +1,4 @@
-# Client Flow
+# Consensus
 ### Before Login, or login with pubkey that has no votepower
 We follow Consensus events to rebuild the current state of Nostrocket.  
 `var currentState` is our current local Nostrocket state tip.

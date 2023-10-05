@@ -13,8 +13,8 @@ A Rocket begins with a Rocket Ignition Event which serves as the anchor point fo
 * `.Kind` 15171031
 * `.Tags`
 	* [MUST]: `ignitionTag`
-	* [MUST]: `n` the Name of the Rocket (`MUST be unique`; `length < 21`; `/^\w+$/`)
-	* [SHOULD]: `a` pointer to a `kind 31107` Problem anchor
+	* [MUST]: `t` with the label `name`. This is the Name of the Rocket (`MUST be unique`; `length < 21`; `/^\w+$/`)
+	* [SHOULD]: `e` pointer to a `kind 15171971` Problem ANCHOR
 	* [OPTIONAL]:`e` pointer to a parent Rocket with the label `parent`
 
 ##### Client Validation
@@ -27,7 +27,7 @@ The pubkey MUST exist in the parent Rocket's Identity Tree if specified.
 * `.Tags`
 	* [MUST]: `ignitionTag`
 	* [MUST]: `e` pointer to the `kind 15171031` Rocket Ignition event with the label `rocket`
-	* [MUST]: `a` pointer to a `kind 31107` Problem anchor
+	* [MAY]: `a` pointer to a `kind 31107` Problem anchor
 	* [OPTIONAL]: `e` pointer to a `kind 15171032 ` Identity Tree with the label `Identity`. Taken from parent Rocket if not specified.
 	* [OPTIONAL]: `e` pointer to a `kind 15171032 ` Identity Tree with the label `Maintainers`. Taken from parent Rocket if not specified.
 	* [OPTIONAL]: `m` the mission of this rocket 
@@ -56,11 +56,13 @@ Protocol Flow:
 * `.Kind` 15172008
 * `.Tags`
 	* [MUST]: `ignitionTag`
-	* [MUST]: `e` pointer to the `kind 15171031` Rocket Ignition event with the label `rocket`
+	* [SHOULD]: `e` pointer to the `kind 15171031` Rocket Ignition event with the label `rocket`
 	* [MUST]: `e` pointer to the state change event being witnessed, with the label `request`
 	* [MUST]: `e` pointer to the last valid consensus event published by this pubkey, with the label `previous`
 	* [SHOULD]: `h` `<current bitcoin height>:<height of this event in this pubkey's consensus chain>`
-	
+
+### Consensus HEAD Event
+This event stops us from producing extra consensus events while catching up to the current state.
 
 - Rocket Anchor
   - Merit Requests
