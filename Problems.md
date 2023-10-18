@@ -15,12 +15,13 @@ Each Maintainer of a Problem (starting with the publisher of the ANCHOR event) M
 * `.Tags`
 	* [🚀MUST]`e` pointer to the Nostrocket root event
 	* [MUST]`e` pointer to a `kind 15171971` ANCHOR for this Problem.
+	* [SHOULD]`d` tag of the ANCHOR event ID
 	* [MUST]`e` pointer to a `kind 15171972` COMMIT that the publisher acknowledges as the most recent legitimate state of the Problem.
 	* [🚀SHOULD]`e` pointer to a Rocket to get Maintainers from (Nostrocket Rocket used by default if none specified)
-	* [SHOULD]`a` pointer to the parent of this problem, MAY incude multiple parents in additional `a` tags
+	* [SHOULD]`e` pointer to the parent of this problem with the label `parent`, MAY incude multiple parents in additional tags
 	* [🍌SHOULD]`p` a pubkey with the label `maintainer` is considered a Maintainer of this Problem, arbitrary number of these tags MAY be included.
 	* [SHOULD]`h` the current Bitcoin tip `<height>:<hash>`
-	* [SHOULD]`s`status tag copied from the commit event: `open || claimed || closed`
+	* [SHOULD]`s`status tag copied from the commit event: `open || claimed || closed || patched || solved`
 	
 #### Client Validation
 * Clients MUST verify that the author is a Maintainer on the Rocket (🚀) or Problem (🍌).
@@ -31,14 +32,14 @@ This is a request to modify the current state of a Problem.
 
 * `.Kind` 15171972
 * `.Tags`
-	* [🚀MUST]`e` pointer to the Nostrocket root event 
-	* [MUST]`a` pointer to a `kind 15171971` Problem ANCHOR.
+	* [🚀MUST]`e` pointer to the Nostrocket root event
+	* [MUST]`e` pointer to a `kind 15171971` Problem ANCHOR with the label `anchor`.
 	* [SHOULD]`e` pointer to the `kind 15171972` event that this commit is based on with the label `previous`
 		*  Excluded IF there are no previous commit events for this problem 
 	* [MUST] include at minimum ONE of the following
-		* `e` pointer to a Problem TEXT event of `kind 15171973` with the lable `content`
+		* `e` pointer to a Problem TEXT event of `kind 15171973` with the label `text`
 		* `e` pointer to anything relevant to this Problem. For example a Snub git repo event ID, a Rocket igniton event, a `kind 15171481` Marker event. Arbitrary numbers of this tag MAY be included. This list must be complete, as it will overwrite anything in the previous COMMIT.
-		*  `s` status tag: `open || claimed || closed` //if `claimed` then the signer is the claimer
+		*  `s` status tag: `open || claimed || closed || patched || solved` //if `claimed` then the signer is the claimer
 
 #### Maintainer/Client Validation
 Rocket Tag: pubkey MUST be a maintainer on that rocket to merge a commit that adds the rocket to the `t` tag.
@@ -49,7 +50,7 @@ Rocket Tag: pubkey MUST be a maintainer on that rocket to merge a commit that ad
 	* [🚀MUST]`e` pointer to the Nostrocket root event 
 	* [MUST]`t` with the label `title`. This is the title of the Problem. MUST be plaintext of `=< 100` characters. 
 	* [SHOULD]`t`with the label `summary`. This is a summary of the problem for use as a preview. MUST be plaintext of `=< 280` characters
-	* [SHOULD]`t`with the label `content`. This is the body of the Problem. MAY contain markdown.
+	* [SHOULD]`t`with the label `full`. This is the body of the Problem. MAY contain markdown.
 
 ## Marker Definition Event
 e.g. a problem/solution difficulty level, a programming language, etc  
