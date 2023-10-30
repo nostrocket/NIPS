@@ -5,7 +5,6 @@ Rocket state exists as multiple event chains which can be compiled to produce th
 
 Consensus over Rocket state is based on **Votepower** which is defined in the [Nostrocket Unprotocol](#).
 
-🚀‼️🍌🔹`ignitionTag` 
 ## Creating a new Rocket
 A Rocket begins with a Rocket Ignition Event which serves as the anchor point for all activity related to the Rocket.
 
