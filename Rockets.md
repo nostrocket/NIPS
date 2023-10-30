@@ -14,7 +14,7 @@ A Rocket begins with a Rocket Ignition Event which serves as the anchor point fo
 * `.Tags`
 	* [MUST]: `ignitionTag`
 	* [MUST]: `t` with the label `name`. This is the Name of the Rocket (`MUST be unique`; `length < 21`; `/^\w+$/`)
-	* [SHOULD]: `e` pointer to a `kind 15171971` Problem ANCHOR
+	* [SHOULD]: `e` with the label `problem` pointing to a `kind 15171971` Problem ANCHOR
 	* [OPTIONAL]:`e` pointer to a parent Rocket with the label `parent`
 
 ##### Client Validation
