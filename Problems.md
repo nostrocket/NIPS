@@ -1,62 +1,38 @@
 # Problem Tree
 🚀🍌 Definitions are located in the Nostrocket NIP index.
-## Problem ANCHOR Event
-All data about this Problem can be found by subscribing to this event.
 
-* `.Kind` 15171971
+## Logging a New Problem
+* `.Kind` 1971
 * `.Tags`
 	* [🚀MUST]`e` pointer to the Nostrocket root event
-	* [🍌MUST]`e` pointer to a problem tracker root event
- 
-## Problem HEAD Event
-Each Maintainer of a Problem (starting with the publisher of the ANCHOR event) MAY publish what they believe to be the legitimate current state of the Problem. This is to be published as a replaceable event so that it can be updated. Clients can render the current state of a problem by finding the latest HEAD event that is published by someone the current user trusts, either directly or indirectly (by starting with the maintainer list published by the problem creator, or the list of maintainers from the associated Rocket).
-
-* `.Kind` 31971 (replaceable)
-* `.Tags`
-	* [🚀MUST]`e` pointer to the Nostrocket root event
-	* [MUST]`e` pointer to a `kind 15171971` ANCHOR for this Problem.
-	* [SHOULD]`d` tag of the ANCHOR event ID
-	* [MUST]`e` pointer to a `kind 15171972` COMMIT that the publisher acknowledges as the most recent legitimate state of the Problem.
-	* [🚀SHOULD]`e` pointer to a Rocket to get Maintainers from (Nostrocket Rocket used by default if none specified)
+	* [MUST]`text` tag with the marker `sentence`: contains a once sentence explanation of the problem in `<=` 100 characters
+	* [SHOULD]`text` tag with the marker `paragrah`: contains a once paragraph explanation of the problem in `<=` 280 characters
+	* [MAY]`text` tag with the marker `page`: contains a detailed explanation of the problem in approximately one page
 	* [SHOULD]`e` pointer to the parent of this problem with the label `parent`, MAY incude multiple parents in additional tags
-	* [🍌SHOULD]`p` a pubkey with the label `maintainer` is considered a Maintainer of this Problem, arbitrary number of these tags MAY be included.
-	* [SHOULD]`h` the current Bitcoin tip `<height>:<hash>`
-	* [SHOULD]`s`status tag copied from the commit event: `open || claimed || closed || patched || solved`
-	
-#### Client Validation
-* Clients MUST verify that the author is a Maintainer on the Rocket (🚀) or Problem (🍌).
-* Clients MUST use the latest HEAD event published by any pubkey that is a Maintainer on the Rocket or Problem.
+	* [🚀SHOULD]`e` pointer to a Rocket to get Maintainers from (Nostrocket Rocket used by default if none specified)
+	* [SHOULD]`tip` the current Bitcoin tip `<height>:<hash>`
+	* [SHOULD] current lifecycle status of the problem and the pubkey that changed the status (if applicable): `["status", "<open || claimed || patched || closed">, "<pubkey>"`.
+	* [MAY] `labels` tag with a list of event IDs to label and sort/filter problems by, e.g. a programming language, difficulty level, rocket, other problems, etc. 
+* `.Content` empty.
 
-## Problem COMMIT Event
-This is a request to modify the current state of a Problem.
+## Modifying a Problem
 
-* `.Kind` 15171972
+To modify a Problem, the problem creator or a Maintainer MUST publish another `Kind 1971` event with the modifications included. Clients SHOULD render the latest event published by a valid pubkey (creator or Maintainer).
 * `.Tags`
-	* [🚀MUST]`e` pointer to the Nostrocket root event
-	* [MUST]`e` pointer to a `kind 15171971` Problem ANCHOR with the label `anchor`.
-	* [SHOULD]`e` pointer to the `kind 15171972` event that this commit is based on with the label `previous`
-		*  Excluded IF there are no previous commit events for this problem 
-	* [MUST] include at minimum ONE of the following
-		* `e` pointer to a Problem TEXT event of `kind 15171973` with the label `text`
-		* `e` pointer to anything relevant to this Problem. For example a Snub git repo event ID, a Rocket igniton event, a `kind 15171481` Marker event. Arbitrary numbers of this tag MAY be included. This list must be complete, as it will overwrite anything in the previous COMMIT.
-		*  `s` status tag: `open || claimed || closed || patched || solved` //if `claimed` then the signer is the claimer
+	* [MUST] `e` pointer to the Problem this event modifies, with the marker `problem`
+	* [SHOULD] `e` pointer to the latest known Problem modification event (if any), with the marker `previous`.
+* `.Content` [OPTIONAL] An explanation of why this is being modified. If included, this should be displayed as a comment.
 
-#### Maintainer/Client Validation
-Rocket Tag: pubkey MUST be a maintainer on that rocket to merge a commit that adds the rocket to the `t` tag.
 
-## Problem Text Event 
-* `.Kind` 15171973
-* `.Tags`  
-	* [🚀MUST]`e` pointer to the Nostrocket root event 
-	* [MUST]`t` with the label `title`. This is the title of the Problem. MUST be plaintext of `=< 100` characters. 
-	* [SHOULD]`t`with the label `summary`. This is a summary of the problem for use as a preview. MUST be plaintext of `=< 280` characters
-	* [SHOULD]`t`with the label `full`. This is the body of the Problem. MAY contain markdown.
+## Problem Lifecycle
+To signal that a problem is being worked on, a Participant SHOULD publish a NIP25 reaction in response to the Problem, with the 💪 emoji in the content. This SHOULD include an `e` tag of the Problem, AND an `e` tag of the latest known modification event with the marker `previous`.
 
-## Marker Definition Event
-e.g. a problem/solution difficulty level, a programming language, etc  
+To abandon a previously claimed Problem and signal that this problem is no longer being worked on, the current claiment SHOULD publish a NIP25 reaction with the 😓 emoji in the content.
 
-* `.Kind` 15171481
-* `.Tags`
-	* [🚀MUST]`e` pointer to the Nostrocket root event 
-	* [MUST]`t` with the label `name`. Name of the keyword. MUST be `=< 16` characters
-	* [SHOULD]`t` with the label `summary` a definition of the label. MUST be plaintext of `=< 280` characters.
+To signal that a problem has been solved and the solution is ready to be verified, the person solving the problem should react with 👌 and also follow up with a comment if any explanation is requried.
+
+Upon witnessing a lifecycle change, the creator of the problem or a Maintainer SHOULD modify the problem to reflect the new status.
+
+After claiming a problem, the Participant SHOULD produce a patch or other solution within 432 blocks. If no solution is forthcoming within this time limit, a Maintainer MAY free the problem by modifying it to set the status to `open` such that other particpants can claim it.
+
+If a Participant repeatedly claims problems and fails to deliver a solution and does not provide a reasonable explanation they SHOULD be asked to self correct, and removed from the Identity Tree if they are unable to do so.
