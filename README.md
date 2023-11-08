@@ -1,12 +1,12 @@
 # NIPs
-The NIPs in this repository describe how Nostrocket uses events. This SHOULD NOT be considered final or up to date.
+The key words "RAW", "DRAFT", "STABLE", "DEPRECATED", and "RETIRED" in this document are to be interpreted as described in NIP-1962.
 
-## Event Kinds
-* `15171031` Rocket Ignition Event
-* `31108` Rocket Metadata Event
-* `15172008` Consensus Event (signed by a pubkey with Votepower)
-* `31009` Identity Tree Event (list of pubkeys to include in the tree)
-* `1971` Problem Tracker Event
+## Event Kinds (implemented)
+* `15171031` Rocket Ignition Event [STATUS: DRAFT]
+* `31108` Rocket Metadata Event [STATUS: RAW]
+* `15172008` Consensus Event (signed by a pubkey with Votepower) [STATUS: DRAFT]
+* `31009` Identity Tree Event (list of pubkeys to include in the tree) [STATUS: DRAFT]
+* `1971` Problem Tracker Event [STATUS: DRAFT]
 
 ## INDEX
 
