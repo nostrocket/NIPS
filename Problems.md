@@ -1,5 +1,15 @@
-# Problem Tree
-🚀🍌 Definitions are located in the Nostrocket NIP index.
+#NIP-1971: Problem Tracking
+###### STATUS: **DRAFT**
+
+## Language
+
+The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.
+
+The key words "RAW", "DRAFT", "STABLE", "DEPRECATED", and "RETIRED" in this document are to be interpreted as described in NIP-1962.
+
+Lines marked 🚀 are only applicable when when consuming this NIP attached to Nostrocket.  
+Lines marked 🍌 are only applicable when consuming this NIP independently from Nostrocket.
+
 
 ## Logging a New Problem
 * `.Kind` 1971
