@@ -6,10 +6,7 @@ The NIPs in this repository describe how Nostrocket uses events. This SHOULD NOT
 * `31108` Rocket Metadata Event
 * `15172008` Consensus Event (signed by a pubkey with Votepower)
 * `31009` Identity Tree Event (list of pubkeys to include in the tree)
-* `15171971` Problem ANCHOR Event
-* `15171972` Problem COMMIT Event (points to TEXT event, and includes other metadata state changes)
-* `15171973` Problem TEXT Event (contains Problem title, summary, markdown body)
-* `31971` Problem HEAD Event (points to the latest COMMIT)
+* `1971` Problem Tracker Event
 
 ## INDEX
 

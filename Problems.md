@@ -4,15 +4,17 @@
 ## Logging a New Problem
 * `.Kind` 1971
 * `.Tags`
-	* [🚀MUST]`e` pointer to the Nostrocket root event
-	* [MUST]`text` tag with the marker `sentence`: contains a once sentence explanation of the problem in `<=` 100 characters
-	* [SHOULD]`text` tag with the marker `paragrah`: contains a once paragraph explanation of the problem in `<=` 280 characters
+	* [🚀MUST]`e` pointer to the Nostrocket root event, with the marker `root`
+	* [🍌SHOULD]`e` pointer to the top level problem in a non-Nostrocket Problem Tree, with the marker `root`
+	* [MUST]`text` tag with the marker `tldr`: contains a once sentence explanation of the problem in `<=` 100 characters
+	* [SHOULD]`text` tag with the marker `paragraph`: contains a one paragraph explanation of the problem in `<=` 280 characters
 	* [MAY]`text` tag with the marker `page`: contains a detailed explanation of the problem in approximately one page
 	* [SHOULD]`e` pointer to the parent of this problem with the label `parent`, MAY incude multiple parents in additional tags
 	* [🚀SHOULD]`e` pointer to a Rocket to get Maintainers from (Nostrocket Rocket used by default if none specified)
 	* [SHOULD]`tip` the current Bitcoin tip `<height>:<hash>`
 	* [SHOULD] current lifecycle status of the problem and the pubkey that changed the status (if applicable): `["status", "<open || claimed || patched || closed">, "<pubkey>"`.
 	* [MAY] `labels` tag with a list of event IDs to label and sort/filter problems by, e.g. a programming language, difficulty level, rocket, other problems, etc. 
+	* [MUST] IF this is a new Problem (not modifying an existing problem), an empty `new` tag MUST be included. 
 * `.Content` empty.
 
 ## Modifying a Problem
@@ -20,7 +22,7 @@
 To modify a Problem, the problem creator or a Maintainer MUST publish another `Kind 1971` event with the modifications included. Clients SHOULD render the latest event published by a valid pubkey (creator or Maintainer).
 * `.Tags`
 	* [MUST] `e` pointer to the Problem this event modifies, with the marker `problem`
-	* [SHOULD] `e` pointer to the latest known Problem modification event (if any), with the marker `previous`.
+	* [MUST] `e` pointer to the latest known Problem modification event (if any), with the marker `previous`.
 * `.Content` [OPTIONAL] An explanation of why this is being modified. If included, this should be displayed as a comment.
 
 
