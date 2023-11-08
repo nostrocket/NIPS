@@ -12,7 +12,7 @@
 	* [SHOULD]`e` pointer to the parent of this problem with the label `parent`, MAY incude multiple parents in additional tags
 	* [🚀SHOULD]`e` pointer to a Rocket to get Maintainers from (Nostrocket Rocket used by default if none specified)
 	* [SHOULD]`tip` the current Bitcoin tip `<height>:<hash>`
-	* [SHOULD] current lifecycle status of the problem and the pubkey that changed the status (if applicable): `["status", "<open || claimed || patched || closed">, "<pubkey>"`.
+	* [SHOULD] current lifecycle status of the problem and the pubkey that changed the status (if applicable): `["status", "<open || claimed || patched || closed">, "<pubkey>"]`.
 	* [MAY] `labels` tag with a list of event IDs to label and sort/filter problems by, e.g. a programming language, difficulty level, rocket, other problems, etc. 
 	* [MUST] IF this is a new Problem (not modifying an existing problem), an empty `new` tag MUST be included. 
 * `.Content` empty.
