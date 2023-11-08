@@ -42,7 +42,7 @@ To signal that a problem is being worked on, a Participant SHOULD publish a NIP2
 
 To abandon a previously claimed Problem and signal that this problem is no longer being worked on, the current claiment SHOULD publish a NIP25 reaction with the 😓 emoji in the content.
 
-To signal that a problem has been solved and the solution is ready to be verified, the person solving the problem should react with 👌 and also follow up with a comment if any explanation is requried.
+To signal that a problem has been solved and the solution is ready to be verified, the person solving the problem should react with 👌 and follow up with a comment linking to a merged patch and providing any explanation if requried.
 
 Upon witnessing a lifecycle change, clients should display the new status as pending, and a Maintainer SHOULD modify the problem to reflect the new status.
 
