@@ -36,7 +36,7 @@ To modify a Problem, the problem creator or a Maintainer MUST publish another `K
 	* [MUST, RAW] `e` pointer to the latest known Problem modification event (if any), with the marker `previous`.
 * `.Content` [OPTIONAL, RAW] An explanation of why this is being modified. If included, this should be displayed as a comment.
 
-## Problem Lifecycle [RAW]
+## Problem Lifecycle
 To signal that a Participant wants to work on a Problem, they SHOULD reply to the problem event:
 
 * `.Kind` 1972
