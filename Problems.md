@@ -22,7 +22,7 @@ Lines marked 🍌 are only applicable when consuming this NIP independently from
 	* [SHOULD, DRAFT]`e` pointer to the parent of this problem with the marker `parent`, MAY incude multiple parents by including additional tags
 	* [🚀SHOULD, DRAFT]`e` pointer to a Rocket from which to get Maintainers (Nostrocket Rocket is used by default if none specified) 
 	* [SHOULD, RAW]`tip` tag with the current Bitcoin tip when this event is published `<height>:<hash>`
-	* [SHOULD, DRAFT] current lifecycle status of the problem and the pubkey that requested a change to this status (if applicable): `["status", "<open || claimed || patched || closed">, "<pubkey>"]`.
+	* [SHOULD, DRAFT] current lifecycle status of the problem and the pubkey that requested a change to this status (if applicable): `["status", "<open || claimed || patched || closed">, "<pubkey>", "<witnessed height (bitcoin)>"]`.
 	* [OPTIONAL, RAW] `labels` tag with a list of event IDs to label and sort/filter problems by, e.g. a programming language, difficulty level, rocket, other problems, etc.
 	* [MUST, RAW] IF this is a new Problem (not modifying an existing problem), an empty `new` tag MUST be included. 
 * `.Content` empty.
@@ -36,16 +36,24 @@ To modify a Problem, the problem creator or a Maintainer MUST publish another `K
 	* [MUST, RAW] `e` pointer to the latest known Problem modification event (if any), with the marker `previous`.
 * `.Content` [OPTIONAL, RAW] An explanation of why this is being modified. If included, this should be displayed as a comment.
 
+## Problem Lifecycle [RAW]
+To signal that a Participant wants to work on a Problem, they SHOULD reply to the problem event:
 
-## Problem Lifecycle [DRAFT]
-To signal that a problem is being worked on, a Participant SHOULD publish a NIP25 reaction in response to the Problem, with the 💪 emoji in the content. This SHOULD include an `e` tag of the Problem, AND an `e` tag of the latest known modification event with the marker `previous`.
+* `.Kind` 1972
+* `.Tags`
+	* [🚀MUST, STABLE]`e` pointer to the Nostrocket root event, with the marker `root`
+	* [🍌SHOULD, RAW]`e` pointer to the top level problem in a non-Nostrocket Problem Tree, with the marker `root`
+	* [MUST, STABLE]`e` pointer to the `1971` problem event with the marker `problem`.
+	* [MUST, DRAFT]`["status", "<open || claimed || patched || closed>"`  
 
-To abandon a previously claimed Problem and signal that this problem is no longer being worked on, the current claiment SHOULD publish a NIP25 reaction with the 😓 emoji in the content.
+After claiming a problem, the Participant SHOULD produce a patch or other solution within 432 blocks. If no solution is forthcoming within this time limit, the problem will be automatically freed for others to solve.
 
-To signal that a problem has been solved and the solution is ready to be verified, the person solving the problem should react with 👌 and follow up with a comment linking to a merged or proposed patch, and provide any explanation if required.
+A Maintainer MAY provide extra time in response to a request by the Participant who claimed the proble. This is done by publishing a new `kind 1971` event with a modified claim timestamp.
 
-Upon witnessing a lifecycle change, clients should display the new status as pending, and a Maintainer SHOULD modify the problem to reflect the new status.
+To abandon a previously claimed Problem and signal that this problem is no longer being worked on, the current claiment SHOULD publish another `1972` event with the status `open`
 
-After claiming a problem, the Participant SHOULD produce a patch or other solution within 432 blocks. If no solution is forthcoming within this time limit, a Maintainer MAY free the problem by modifying it to set the status to `open` such that other particpants can claim it.
+To signal that a problem has been solved and the solution is ready to be verified, the person solving the problem SHOULD publish another `1972` event with the status `patched`, and follow up with a comment linking to a merged or proposed patch, and provide any explanation if required.
 
-If a Participant repeatedly claims problems and fails to deliver a solution and does not provide a reasonable explanation they SHOULD be asked to self correct, and removed from the Identity Tree if they are unable to do so.
+Upon witnessing any valid lifecycle change, clients should display the new status immediately, and a Maintainer SHOULD solidify this new status with a new `1971` event modifying the problem to reflect the new status, time of the change, and pubkey of the requestor.
+
+If a Participant repeatedly claims problems and fails to deliver a solution or request a time extension and does not provide a reasonable explanation, they SHOULD be asked to self correct, and removed from the Identity Tree if they are unable to do so.
