@@ -26,6 +26,9 @@ Protocol Flow:
 
 ### Consensus HEAD Event
 This event stops us from producing extra consensus events while catching up to the current state.
+* `.Kind` 12008
+
+We do not publish a consensus event unless we have a HEAD event of our own. Our first HEAD event should be a duplicate of someone else's (the first time after increasing our lead time to > 0)
 
 - Rocket Anchor
   - Merit Requests

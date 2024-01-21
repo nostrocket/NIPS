@@ -22,13 +22,13 @@ People who have merits are able to vote to approve or reject new merit requests.
 * `.Kind` 1603
 * `.Tags`
 	* [MUST, STABLE]`e` pointer to the Nostrocket root event, with the marker `root`
-	* [MUST, DRAFT]`e` pointer to the merit request that this is voting on
+	* [MUST, DRAFT]`e` pointer to the merit request that this is voting on, with the label `merit`
+	* [MUST, DRAFT]`e` pointer to a Rocket that the merit was created by, with the label `rocket`
 	* [MUST, DRAFT]`["vote", <"ratify" | "blackball">` direction of the vote
 	* [SHOULD, RAW]`bitcoin` tag with the current Bitcoin tip when this event is published `<height>:<hash>`
 * `.Content` empty.
 
 Consensus events can then be used to add this vote to a consensus chain in the usual manner, causing a HARD state change that updates the vote tally.
-
 
 ## Sponsoring a Contributor
 A person who is in the Identity Tree MAY sponsor a Contributor by paying them for their work. In doing so, the sponsor recieves the Contributor's Merits.
