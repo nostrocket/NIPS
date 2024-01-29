@@ -13,7 +13,7 @@ To avoid [language theoretic security vulnerabilities](http://langsec.org/), sta
 ### Comparisons
 
 #### Bitcoin
-**Bitcoin** handles the halting problem through limitations on state transitions - the different states that Bitcoin can enter after handling a valid transaction is finite. In order to handle novel types of state or execution, the Bitcoin VM must be modified, but Bitcoin is explicitly designed such that these modifications are not impossible without near-unanimous agreement between all users of the network.
+**Bitcoin** handles the halting problem through limitations on state transitions - the different states that Bitcoin can enter after handling a valid transaction is finite. In order to handle novel types of state or execution, the Bitcoin VM must be modified, but Bitcoin is explicitly designed such that these modifications are impossible without near-unanimous agreement between the time-bounded rolling-set of participants who recieve Bitcoin as a form of payment.
 
 #### The EVM
-**The EVM** handles the halting problem with a fee consumption model that limits opcode execution. This allows turing completeness with halting guarantees. The major benefit is we don't need to modify the consensus rules to implement novel functionality. However the language complexity required precludes full recognition of valid or expected inputs, hence the DAO hack etc
+**The EVM** handles the halting problem with a fee consumption model that limits opcode execution. This allows Turing pseudo-completeness (with halting guarantees). The major benefit is we don't need to modify the consensus rules to implement novel functionality. However the language complexity required precludes full recognition of valid or expected inputs, hence the (easily predicted) DAO hack etc.
