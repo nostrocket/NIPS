@@ -22,7 +22,7 @@ However the language complexity required precludes full recognition of valid or 
 #### Nostrocket
 A **Nostrocket** state change request is a Nostr event that complies with the protocol in the context of the current state.   
  
-To avoid [language theoretic security vulnerabilities](http://langsec.org/), state change requests are explicit, atomic, and do not invoke Turing complete execution (the same model as Bitcoin). 
+To avoid [language theoretic security vulnerabilities](http://langsec.org/), state change requests are explicit, atomic, and do not invoke Turing complete execution (the same model as Bitcoin). This enables full recognition of valid or expected inputs prior to execution, which is not possible with smart contract platforms.
 
 However, Nostrocket has the same level of flexibility as a Turing complete environment such as the EVM. Instead of this flexibility being invoked by "transactions", it is prestated in the codebase that a user executes (leveraging their web of trust) and invoked by explicit and atomic state change requests.
 
