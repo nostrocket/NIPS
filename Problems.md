@@ -33,7 +33,6 @@ To modify a Problem, the problem creator or a Maintainer MUST publish another `K
 
 * `.Tags`
 	* [MUST, DRAFT] `e` pointer to the Problem this event modifies, with the marker `problem`
-	* [MUST, RAW] `e` pointer to the latest known Problem modification event (if any), with the marker `previous`.
 * `.Content` [OPTIONAL, RAW] An explanation of why this is being modified. If included, this should be displayed as a comment.
 
 ## Problem Lifecycle
