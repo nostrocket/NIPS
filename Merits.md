@@ -66,12 +66,15 @@ In order to do this they must first publish the Bitcoin address they wish to pay
 #### Tags
 | RFC 2119 | Description | Spec or Example |
 |---|---|---|
-|MUST|The Rocket in which the person wishes to own merits |`["a", 31108:<pubkey>:<rocket d tag>]`|
+|OPTIONAL|The Rocket in which the person wishes to own merits, if not specified it will be deemed valid on all Rockets |`["a", 31108:<pubkey>:<rocket d tag>]`|
 |MUST|A Bitcoin address that funding will come from (downstream change addressess will autmotically be included by the client after the first transaction)|`["onchain", <Bitcoin Address>]`|
 
-The Rocket's votepower should then include this event as a proof and add the Bitcoin address and npub to the Rocket's current state. All transactions at a depth of >5 that spend Bitcoin from this address to an address specified in a valid auction listing, and are of the correct amount, are considered proof that the purchase has been made successfully, and the Merits will thereafter be owned by the npub associated with the spending address.
+A Rocket's votepower should include this event as a proof and add the Bitcoin address and npub to the Rocket's current state. All transactions at a depth of >5 that spend Bitcoin from this address to an address specified in a valid auction listing, and are of the correct amount, are considered proof that the purchase has been made successfully, and the Merits will thereafter be owned by the npub associated with the spending address.
 
 Change addresses following this transaction will automatically be considered by the client to be a spending address associated with same npub.
+
+### Client behaviour
+Clients should check the current UTXO set for transaction that spend from the prestated buyers address(es) and to an AMR sale address. If the amount is correct, and the transaction is at a depth of 6+, use this as proof and update the owner of the merits to the buyer's pubkey.
 
 
 A person who is in the Identity Tree MAY sponsor a Contributor by paying them for their work. In doing so, the sponsor recieves the Contributor's Merits.
