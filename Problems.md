@@ -9,7 +9,7 @@ Kind `31971`
 |OPTIONAL|One page describing the problem, MAY include markdown|`["page", <extended description of the problem>]`|
 |SHOULD|The parent(s) of this problem|`["a", 31971:<pubkey>:<256bit hex>, "parent"]`|
 |OPTIONAL|Rockets that this applies to|`["a", 31108:<pubkey>:<rocket name>]`|
-|SHOULD|Lifecycle status|`["status", "<big | children | open | claimed | patched | closed">]`|
+|SHOULD|Lifecycle status|`["status", "<big \| children \| open \| claimed \| patched \| closed">]`|
 |OPTIONAL|Claim data|`["claim", <pubkey claiming it>:<bitcoin height when claimed>]`|
 |OPTIONAL|Tags, e.g. repository nip34 `a` tag, difficulty level, programming language, references to other problems, etc |`["repo", 30617:<pubkey>:<d-tag>]` `["language", "golang"]` `["a", 31971:<pubkey>:<256bit hex>, "mention"]` `["repo", 30617:<pubkey>:<d-tag>] //repo` `["repo", 30617:<pubkey>:<d-tag>] //repo`|
 |SHOULD|Pubkeys of maintainers, add a new tag for each, clients SHOULD copy the parent's list to begin with|`["maintainer", <pubkey>]`|
