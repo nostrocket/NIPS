@@ -6,7 +6,8 @@ The key words "RAW", "DRAFT", "STABLE", "DEPRECATED", and "RETIRED" in this docu
 	* MSB Ruleset used by Nostrocket: `MSBR3340` 
 
 ### Problem Tracker [RAW]
-* `1971` Problem Tracker Event [STATUS: DRAFT]
+* `31971` Problem Tracker Event (NIP-1971, see `Problems.md`) [STATUS: DRAFT]
+	* a Rocket's problem statement is its `ignition` event's `problem` tag, see `MSBR334000.md`
 
 ### Merits [DRAFT]
 * `1409` Merit Request

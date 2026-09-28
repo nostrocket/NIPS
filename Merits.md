@@ -8,7 +8,7 @@ People who have solved a problem are eligible to request merits for the value of
 #### Tags
 | RFC 2119 | Description | Spec or Example |
 |---|---|---|
-|MUST|The problem that was solved|`[ "problem", "1971", 1971:<problem creator pubkey>:<kind 1971 problem tracker event d tag>, <relay hint> ]` `[ "problem", "text" <a brief plaintext description of the problem that has been solved> ]` |
+|MUST|The problem that was solved|`[ "problem", "31971", 31971:<problem creator pubkey>:<kind 31971 problem tracker event d tag>, <relay hint> ]` `[ "problem", "text" <a brief plaintext description of the problem that has been solved> ]` |
 |OPTIONAL|Proof of solution|`["solution", "url", <a merged pull request, url of files, etc>]` `["solution", "uri", <an image (e.g. a receipt)>]`|
 |MUST|The SEC this is making a claim from|`["a", 31108:<pubkey>:<rocket d tag>]`|
 |MUST|number of merits being requested|`["merits", "<int>"]`|
